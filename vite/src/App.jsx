@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+return  <>
+  <빵 />
+  <패티 />
+  <양상추 />
+  <토마토 />
+  <치즈 />
+  <빵 />
+  </>;
 }
 
-export default App
+function 빵() {
+return (
+  <div className = "빵">
+    밀가루
+    <span> 물</span>
+    <span> 계란</span>
+    <span> 이스트</span>
+  </div>
+);
+}
+
+function 패티() {
+return (
+  <div className = "패티">
+    소고기
+    <sapn> 후추</sapn>
+    <sapn> 소금</sapn>
+  </div>
+);
+}
+
+function 양상추() {
+return (
+  <div className = "양상추">
+    잎사귀
+    <sapn> 줄기</sapn>
+  </div>
+);
+}
+function 토마토() {
+  return (
+  <div className = "토마토">
+    껍질
+    <sapn> 과육</sapn>
+    <sapn> 씨앗</sapn>
+  </div>
+  );
+}
+
+function 치즈() {
+return (
+  <div className = "치즈">
+    우유
+    <span> 소금</span>
+    <span> 색소</span>
+  </div>
+);
+}
+
+
+
+export default App;
