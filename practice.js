@@ -1,5 +1,3 @@
-import './App.css';
-
 const fruits = [
     {name: "딸기", color: "빨강", 크기: 2 },
     {name: "바나나", color: "노랑", 크기: 5 },
@@ -13,19 +11,17 @@ const fruits = [
     {name: "수박", color: "초록", 크기: 8 },
 ];
 
-function App() {
-  return (
-    <>
-    {fruits.
-    filter((fruit) => fruit.color === "노랑")
-    .map((fruit) => (
-      <div key={fruit.name}>
-      이름 : {fruit.name}, 색깔 : {fruit.color},
-      크기 : {fruit.크기}
-    </div>
-    ))}
-    </>
-  );
-}
+console.log( fruits.map((fruit)=> {
+    return fruit.name
+}));
+console.log( fruits.map((fruit) => fruit.name + "주스"));
 
-export default App;
+console.log(fruits.filter((fruit) => fruit.color === "빨강"));
+
+console.log(fruits.filter((fruit) => fruit.크기 >= 3));
+
+console.log(
+    fruits
+        .filter((fruit) => fruit.크기 >= 3 && fruit.color === "빨강")
+    .map((fruit) => fruit.name)
+);
