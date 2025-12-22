@@ -1,55 +1,110 @@
 import { Component, useState } from 'react';
 import './App.css';
 
-
 function App() {
-const [counter, setCounter]= useState(1)
-  return (
-<>
-<Count 
-counter ={counter} 
-hello = "hello" 
-array = {[1, 2, 3, "안녕하세요"]}
-/> 
-<button
-onClick={() => {
-  setCounter((prev) => prev +1)
-  }}
-  > 
-    +
-</button>
-<button
-onClick={() => {
-  setCounter((prev) => prev -1)
-  }}
-  >
-    -
-</button>
-</>
-);
+const [counter, setCounter]= useState(0);
+const [inputValue, setInputValue] = useState(2)
+
+const incrementCounter = () => {
+  setCounter(counter +1)
+}
+const decremntCounter = () => {
+  setCounter(counter -1);
 }
 
-// class App extends Component {
-//   state = {counter: 2};
+const setCounterNumber = () => {
+  setCounter(inputValue);
+}
+  return (
+<>
+<Count counter ={counter} /> 
+<PlusButton setCounter={setCounter} incrementCounter=
+  {incrementCounter}/>
+<MinusButton setCounter={setCounter} 
+decremntCounter=
+{decremntCounter}/>
+<CounterInput 
+inputValue={inputValue} 
+setInputValue ={setInputValue}
+setCounterNumber = {setCounterNumber}/>
+</>
+  );
+}
+function CounterInput ({inputValue, setInputValue,setCounterNumber}) {
+  return(
+    <>
+    <input type='number' value={inputValue} onChange=
+    {(event) => setInputValue(event.target.value)} />
+    <button onClick={setCounterNumber}>입력</button>
+    </>
+  )
+}
+
+function PlusButton ({setCounter, incrementCounter}){
+  return(
+  <button
+    onClick={incrementCounter}
+    > + </button>)
+}
+
+function MinusButton ({setCounter, decremntCounter}){
+  return(
+  <button
+    onClick={decremntCounter}
+    > - </button>)
+}
+
+function Count ({counter}) {
+  return <div>counter : {counter}</div>
+}
+//class ClassApp extends Component {
+//   state = {counter: 1};
+// 
+//   incrementCounter = () => {
+//     this.setState({counter: this.state.counter +1});
+//   }
+//   decremntCounter = () => {
+//     this.setState({counter: this.state.counter -1})
+//   }
 //   render(){
 //     return(
 //       <>
-//       <div>counter {this.state.counter}</div>
-//       <button 
-//       onClick={() => this.setState({counter: this.state.counter +1})}
-//       >+</button>
-//       <button onClick={() => this.setState({counter: this.state.counter -1})}
-//       >-</button>
-//       </>
+//     <Count counter={this.state.counter} />
+//     <PlusButton incrementCounter={this.incrementCounter}/>
+//     <MinusButton decremntCounter={this.decremntCounter}/>
+//     </>
 //     );
 //   }
 // }
-
-function Count ({array, counter, hello}) {
-  console.log("array", array);
-  console.log("counter", counter);
-  console.log("hello", hello);
-  return <div>counter : {counter}</div>
-}
+// class PlusButton extends Component {
+//   render() {
+//     return (
+//     <button 
+//       onClick={this.props.incrementCounter}
+//       >
+//         +
+//       </button>
+//       );
+//   }
+// }
+// 
+// class MinusButton extends Component {
+//   render() {
+//     return (
+//     <button
+//       onClick={this.props.decremntCounter}
+//       >
+//         -
+//     </button>
+// 
+//     );
+//   }
+// }
+// 
+// class Count extends Component {
+//   render(){
+//     return <div>counter: {this.props.counter}</div>
+//   }
+// }
 
 export default App;
