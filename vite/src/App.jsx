@@ -1,74 +1,57 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [todoList, setTodoList] = useState([
-  {id: 0, content:'밥먹기'},
-  {id: 1, content:'코딩 공부하기'},
-  {id: 2, content:'잠 자기'},
-]);
-return (
-  <>
-  <TodoList todoList = {todoList} setTodoList={setTodoList} />
-  <br/>
-  <TodoInput todoList={todoList} setTodoList={setTodoList}/>
-  
-  </>
-)
-}
-
-function TodoInput({todoList, setTodoList}){
-  const [inputValue, setInputValue] = useState('');
-  return(
-    <>
-  <input value={inputValue} onChange={(event) =>
-  setInputValue(event.target.value)}/>
-  <button onClick={() => {
-    const newTodo ={id: Number(new Date()),content : inputValue}
-    const newTodoList = [...todoList, newTodo];
-    setTodoList(newTodoList);
-    setInputValue("");
-      }}>추가하기</button>
-</>
-  )
-}
-
-function TodoList({todoList,setTodoList}) {
-  return( 
-<> 
-  <ul>
-    {todoList.map((todo) =>(
-    <Todo key = {todo.id} todo={todo} setTodoList={setTodoList}/>
-    ))}
-
-  </ul>
-</> 
-);
-}
-
-function Todo({todo,setTodoList}) {
-    const [inputValue, setInputValue] = useState('');
-    console.log(inputValue);
+  const [mood, setMood] = useState("Normal");
   return (
-  <li >
-  {todo.content}
-  <input value={inputValue} onChange={(event) =>
-  setInputValue(event.target.value)}
-  />
-  <button onClick={() => {
-    setTodoList((prev)=> prev.map((el) => el.id ===todo.id ? {...el, content :inputValue} : el
-  ));
+    <>
+      <Face3 mood={mood} />
+      <div
+        className={
+          mood === "Happy" ? "happy" : mood === "Normal" ? "normal" : "sad"
+        }
+      >
+        기분: {mood}
+      </div>
+      <div>
+        <button onClick={() => setMood("Happy")}>Happy</button>
+        <button onClick={() => setMood("Normal")}>Normal</button>
+        <button onClick={() => setMood("Sad")}>Normal</button>
+      </div>
+    </>
+  );
+}
+function Face({ mood }) {
+  if (mood === "Happy") {
+    return "😊";
+  } else if (mood === "Normal") {
+    return "😑";
+  } else {
+    return "😭";
+  }
+}
 
-  }}>수정</button>
-  <button onClick={() => {
-    setTodoList((prev) => {
-    return prev.filter((el) => el.id !== todo.id)
-    });
-  }}
-  >삭제</button>
-  
-  </li>
+function Face2({ mood }) {
+  return (
+    <>
+      {mood === "Happy" ? (
+        <div>😊</div>
+      ) : mood === "Normal" ? (
+        <p>😑</p>
+      ) : (
+        <span>😭</span>
+      )}
+    </>
   );
 }
 
+function Face3({ mood }) {
+  return (
+    <>
+      {mood === "Happy" && <div>😊</div>}
+      {mood === "Normal" && <div>😑</div>}
+      {mood === "Sad" && <div>😭</div>}
+    </>
+  );
+}
 export default App;

@@ -1,15 +1,11 @@
-.빵 {
-  background-color: orange;
+.happy {
+  color: red;
 }
-.패티 {
-  background-color: brown; 
+
+.normal {
+  color: green;
 }
-.양상추 {
-  background-color: green;
-}
-.토마토 {
-  background-color: red;
-}
-.치즈 {
-  background-color: yellow;
+
+.sad {
+  color: blue;
 }
